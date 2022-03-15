@@ -31,9 +31,43 @@
 .auth__left .text p{
   font-weight: 400;
   font-size: 24px;
-  margin-left: 10px
+  margin-top: 10px
 }
 .auth__right{
   width: 100%;
   height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input, .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  margin-left:40px!important;
+  
+}
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root{
+  border-radius: 10px!important;
+}
+.mylink{
+  background: linear-gradient(90deg, #008720 0%, #004A47 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+text-decoration: none;
+}
+
+.resetLink{
+  background: linear-gradient(180deg, #31C1DB 0%, #56F9B6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-decoration: none;
+  font-weight: bold;
 }

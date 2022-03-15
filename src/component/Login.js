@@ -8,7 +8,8 @@ import Copyright from './Copyright';
 import AuthPage from './common/AuthPage';
 import MailIcon from '../images/iconEmail.png'
 import PassIcon from '../images/iconPassword.png'
-import './Login.css'
+import GoogleImg from '../images/google.png'
+import FacebookImg from '../images/facebook.png'
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -109,7 +110,7 @@ function Login() {
           {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar> */}
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" style={{color:'#2B395B', fontWeight:'bold'}}>
             Login With Email
           </Typography>
           <p className='text-center mt-3' style={{ color: '#929EBA', width: '80%', margin: 'auto' }}>
@@ -136,6 +137,7 @@ function Login() {
                   </InputAdornment>
                 )
               }}
+              style={{background:'#F9F9F9'}}
 
             />
             <TextField
@@ -150,6 +152,7 @@ function Login() {
               type={showPassword ? "text" : "password"}
               id="password"
               autoComplete="current-password"
+              style={{background:'#F9F9F9'}}
               InputProps={{
                 endAdornment: (
                   <>
@@ -187,14 +190,16 @@ function Login() {
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
-
-              </Grid>
-              <Grid item>
-                <RouteLink to="/register">register</RouteLink>
-              </Grid>
-            </Grid>
+            <p className='text-center'>Forgot your password? <a href="#" className='resetLink'>Reset here</a></p>
+            <div className='d-flex align-items-center mt-5 justify-content-between'>
+              <div>
+                <img style={{marginRight:'20px'}} src={GoogleImg} alt="" />
+                <img  src={FacebookImg} alt="" />
+              </div>
+              <div className='text-center'>
+                <span style={{fontWeight:'bold'}}>Haven't Account? <RouteLink to="/register" className='mylink'> Register</RouteLink></span>
+              </div>
+            </div>
           </Box>
         </Box>
         {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}

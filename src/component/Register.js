@@ -112,7 +112,7 @@ function Register() {
         {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar> */}
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" style={{color:'#2B395B', fontWeight:'bold'}}>
           Create an Account
         </Typography>
         <p className='text-center mt-3' style={{ color: '#929EBA', width: '80%', margin: 'auto' }}>
@@ -122,6 +122,7 @@ function Register() {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+               style={{background:'#F9F9F9'}}
                 error={firstnameError != ""}
                 helperText={firstnameError}
                 onChange={validateFirstname}
@@ -143,6 +144,7 @@ function Register() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+               style={{background:'#F9F9F9'}}
                 error={lastnameError != ""}
                 helperText={lastnameError}
                 onChange={validateLastname}
@@ -163,6 +165,7 @@ function Register() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+               style={{background:'#F9F9F9'}}
                 error={emailError != ""}
                 helperText={emailError}
                 onChange={validateEmail}
@@ -183,6 +186,7 @@ function Register() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+               style={{background:'#F9F9F9'}}
                 error={passwordError != ""}
                 helperText={passwordError}
                 onChange={validatePassword}
@@ -231,11 +235,13 @@ function Register() {
           >
             Sign Up
           </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <RouteLink to="/login">login</RouteLink>
-            </Grid>
-          </Grid>
+          <p className='text-center mt-3' style={{ color: '#929EBA', width: '80%', margin: 'auto' }}>
+            By tap Sign Up button you accept terms and privacy this app
+          </p>
+          <div className='text-center mt-5'>
+             <span style={{fontWeight:'bold'}}>Already Have Account? <RouteLink to="/login" className='mylink'> Login Now</RouteLink></span>
+              
+          </div>
         </Box>
       </Box>
       {/* <Copyright sx={{ mt: 5 }} /> */}
