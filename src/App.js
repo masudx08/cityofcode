@@ -3,7 +3,7 @@ import Login from './component/Login';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './component/Navbar';
 import Landing from './component/Landing';
 import Dashboard from './component/Dashboard';

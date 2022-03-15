@@ -4,6 +4,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useNavigate, Link as RouteLink } from 'react-router-dom';
 import Copyright from './Copyright';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import AuthPage from './common/AuthPage';
+import UserIcon from '../images/iconUser.png'
+import MailIcon from '../images/iconEmail.png'
+import PassIcon from '../images/iconPassword.png'
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -95,7 +99,8 @@ function Register() {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <AuthPage text1='Join Now' text2='Register to continue access pages'>
+      <Container component="main" maxWidth="xs">
       <Box
         sx={{
           marginTop: 8,
@@ -104,12 +109,15 @@ function Register() {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
-        </Avatar>
+        </Avatar> */}
         <Typography component="h1" variant="h5">
-          Sign up
+          Create an Account
         </Typography>
+        <p className='text-center mt-3' style={{ color: '#929EBA', width: '80%', margin: 'auto' }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp
+          </p>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -124,6 +132,13 @@ function Register() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <img style={{ position: 'absolute', left: '10px', marginRight: '20px' }} src={UserIcon} alt='' />
+                    </InputAdornment>
+                  )
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -137,6 +152,13 @@ function Register() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="family-name"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <img style={{ position: 'absolute', left: '10px', marginRight: '20px' }} src={UserIcon} alt='' />
+                    </InputAdornment>
+                  )
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -150,6 +172,13 @@ function Register() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <img style={{ position: 'absolute', left: '10px', marginRight: '20px' }} src={MailIcon} alt='' />
+                    </InputAdornment>
+                  )
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -165,7 +194,12 @@ function Register() {
                 id="password"
                 autoComplete="new-password"
                 InputProps={{
+                     
                   endAdornment: (
+                    <>
+                    <InputAdornment position="end">
+                      <img style={{ position: 'absolute', left: '10px', marginRight: '20px' }} src={PassIcon} alt='' />
+                    </InputAdornment>
                     <InputAdornment position="end">
                       <IconButton
                         aria-label="toggle password visibility"
@@ -176,6 +210,7 @@ function Register() {
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
+                    </>
                   )
                 }}
               />
@@ -192,6 +227,7 @@ function Register() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            style={{background: 'linear-gradient(90deg, #008720 0%, #004A47 100%)'}}
           >
             Sign Up
           </Button>
@@ -202,8 +238,9 @@ function Register() {
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
+      {/* <Copyright sx={{ mt: 5 }} /> */}
     </Container>
+    </AuthPage>
   )
 }
 

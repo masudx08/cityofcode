@@ -3,17 +3,20 @@ import React, { useState } from 'react'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useNavigate, Link as RouteLink } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import {login} from "../services/AuthService";
+import { login } from "../services/AuthService";
 import Copyright from './Copyright';
-
+import AuthPage from './common/AuthPage';
+import MailIcon from '../images/iconEmail.png'
+import PassIcon from '../images/iconPassword.png'
+import './Login.css'
 function Login() {
-  const[showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const[emailError, setEmailError] = useState("");
-  const[passwordError, setPasswordError] = useState("");
-  const[loginError, setLoginError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [loginError, setLoginError] = useState("");
 
-  function handleClickShowPassword(){
+  function handleClickShowPassword() {
     setShowPassword(!showPassword);
   }
 
@@ -37,25 +40,25 @@ function Login() {
     let validEmail = validateEmail(email);
     let validPassword = validatePassword(password);
 
-    if(!validEmail || !validPassword){
+    if (!validEmail || !validPassword) {
       return;
     }
-    
+
     // attemp login
     login(email, password).then(loggedIn => {
 
-      if(loggedIn){
+      if (loggedIn) {
         navigate("/dashboard");
-      }else{
+      } else {
         setLoginError("Sorry something went wrong, try again later.");
       }
 
-      
+
     });
   };
 
-  function validateEmail(email){
-    if(email.length > 255 || email.length <= 0){
+  function validateEmail(email) {
+    if (email.length > 255 || email.length <= 0) {
       setEmailError("Email no more than 255 or less than 0");
       return false;
     }
@@ -79,8 +82,8 @@ function Login() {
     return true;
   }
 
-  function validatePassword(password){
-    if(password.length > 255 || password.length <= 0){
+  function validatePassword(password) {
+    if (password.length > 255 || password.length <= 0) {
       setPasswordError("Password no more than 255 or less than 0");
       return false;
     }
@@ -89,92 +92,114 @@ function Login() {
     return true;
   }
 
-  
+
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+    <AuthPage text1='Welcome Back' text2='Sign in to continue access pages'>
+
+      <Container component="main" maxWidth="xs" className='login'>
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            error={emailError != ""}
-            helperText={emailError}
-            onChange={validateEmail}
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            error={passwordError != ""}
-            helperText={passwordError}
-            onChange={validatePassword}
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type={showPassword ? "text" :"password"}
-            id="password"
-            autoComplete="current-password"
-            InputProps={{            
-              endAdornment:(
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            )}}
-          />
-        <Typography variant="overline" display={loginError != "" ? "block" : "none"}>
-          {loginError}
-        </Typography>
-          
-          {/* <FormControlLabel
+        </Avatar> */}
+          <Typography component="h1" variant="h5">
+            Login With Email
+          </Typography>
+          <p className='text-center mt-3' style={{ color: '#929EBA', width: '80%', margin: 'auto' }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp
+          </p>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              error={emailError != ""}
+              helperText={emailError}
+              onChange={validateEmail}
+              required
+              fullWidth
+              label='Email Address'
+              id="email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <img style={{ position: 'absolute', left: '10px', marginRight: '20px' }} src={MailIcon} alt='' />
+                  </InputAdornment>
+                )
+              }}
+
+            />
+            <TextField
+              margin="normal"
+              error={passwordError != ""}
+              helperText={passwordError}
+              onChange={validatePassword}
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              id="password"
+              autoComplete="current-password"
+              InputProps={{
+                endAdornment: (
+                  <>
+                    <InputAdornment position="end">
+                      <img style={{ position: 'absolute', left: '10px', marginRight: '20px' }} src={PassIcon} alt='' />
+                    </InputAdornment>
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  </>
+                )
+              }}
+            />
+            <Typography variant="overline" display={loginError != "" ? "block" : "none"}>
+              {loginError}
+            </Typography>
+
+            {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           /> */}
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              style={{background: 'linear-gradient(90deg, #008720 0%, #004A47 100%)'}}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
 
+              </Grid>
+              <Grid item>
+                <RouteLink to="/register">register</RouteLink>
+              </Grid>
             </Grid>
-            <Grid item>
-              <RouteLink to="/register">register</RouteLink>
-            </Grid>
-          </Grid>
+          </Box>
         </Box>
-      </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
-    </Container>
+        {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
+      </Container>
+    </AuthPage>
   )
 }
 
